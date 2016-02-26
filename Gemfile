@@ -25,7 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem "omniauth-github", '1.1.1'
 
-gem 'dotenv-rails', :groups => [:development, :test]
+gem 'dotenv-rails'
 
 gem 'devise'
 
@@ -41,11 +41,22 @@ gem 'devise'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+
+  gem 'dotenv-rails'
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
+
+  gem 'dotenv-rails'
+
+	gem 'capistrano', '~> 3.1.0'
+	gem 'capistrano-bundler', '~> 1.1.2'
+	gem 'capistrano-rails', '~> 1.1.1'
+	gem 'capistrano-rvm'
+
+	gem 'net-ssh', '2.7.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
