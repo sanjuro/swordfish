@@ -1,6 +1,7 @@
 class GithubIssue
 
-	attr_reader :id, :number, :body, :name, :assignee, :state, :priority, :client, :category, :labels, :comments
+	attr_reader :id, :number, :body, :name, :assignee, :state, :priority, :priority_color,
+				:client, :client_color, :category, :category_color, :labels, :comments
 
 	def initialize(hash)
 
@@ -26,10 +27,12 @@ class GithubIssue
 
 			if label["name"].match('(^Cat:+)\W(.+)')
 				@category = label["name"].match('(^Cat:+)\W(.+)')[2]
+				@category_color = label["color"]
 			end
 
 			if label["name"].match('(^P:+)\W(.+)')
 				@priority = label["name"].match('(^P:+)\W(.+)')[2]
+				@priority_color = label["color"]
 			end
 		end
 	end

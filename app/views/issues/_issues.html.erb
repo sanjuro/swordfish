@@ -25,8 +25,16 @@
 		<td><%= issue.name %></td>
 		<td><%= issue.body %></td>
 		<td><%= issue.number %></td>
-		<td><%= issue.priority %></td>
-		<td><%= issue.category %></td>
+		<td>
+			<button type="button" class="btn btn-default" style="background-color:#<%= issue.priority_color %>">
+				<%= issue.priority %>
+			</button>
+		</td>
+		<td>
+			<button type="button" class="btn btn-default" style="background-color:#<%= issue.category_color %>">
+				<%= issue.category %>
+			</button>
+		</td>
 		<td><%= issue.assignee.login unless issue.assignee.nil? %></td>
 		<td><%= issue.comments %></td>
 		<td><%= issue.state %></td>

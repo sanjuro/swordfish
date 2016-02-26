@@ -11,14 +11,18 @@
 </head>
 <body>
 
+<br>
 <div class="container-fluid pull-right">
 	<div class="navigation" data-id="navigation">
 		<ul class="nav nav-pills">
-		  <li role="presentation" class="active"><a title="repositories" href="/repositories">				
+		  <li role="presentation" class="active">
+		  	<a title="repositories" href="/repositories">				
 					Repositories
-					</a>
+				</a>
 			</li>
-		  <li role="presentation"><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+		  <li role="presentation">
+		  	<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+		  </li>
 		</ul>
 	</div>
 </div>
