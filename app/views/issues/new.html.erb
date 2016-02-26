@@ -1,0 +1,14 @@
+<article class="single">
+    <header>
+        <hgroup>            
+        <h1>Create New Issue</h1>				
+        </hgroup>
+	</header>
+
+	<div id="issue_form" class="container"> 
+  	<%= form_tag("/issues", method: "post") do %>
+			<%= render :partial => 'issues/form' %>
+      <button type="submit" class="btn btn-default">Create</button>
+  	<% end %>
+	</div>
+</aritcle>

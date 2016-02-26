@@ -1,0 +1,23 @@
+
+<% if @repositories.empty? %>
+	<h3>
+	<span class="blank_slate">
+		There are no repositories yet.
+	</span>
+	</h3>
+<% else %>
+
+<div class="repositories"> 
+
+	<% @repositories.each do |repository| %>
+    <h4>
+    <%= repository.name %> - <%= repository.url %> 
+		<a type="button" class="btn btn-primary" href="/issues">
+			View Issues
+		</a>
+		</h4>
+	<% end %>
+
+</div>
+
+<% end %>

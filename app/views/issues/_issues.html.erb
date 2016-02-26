@@ -1,0 +1,38 @@
+<% if @issues.empty? %>
+	<h3>
+	<span class="blank_slate">
+		There are no issues yet.
+	</span>
+	</h3>
+<% else %>
+
+<div class="issues"> 
+<table class="table">
+  <tr>
+    <th>Client Name</th>
+    <th>Action Item/Request</th>
+    <th>Description</th>
+    <th>GH Number</th>
+    <th>Priority</th>
+    <th>Category</th>
+    <th>Assigned To</th>
+    <th>Comments</th>
+    <th>Status</th>
+  </tr>
+	<% @issues.each do |issue| %>
+	<tr>
+		<td><%= issue.client %></td>
+		<td><%= issue.name %></td>
+		<td><%= issue.body %></td>
+		<td><%= issue.number %></td>
+		<td><%= issue.priority %></td>
+		<td><%= issue.category %></td>
+		<td><%= issue.assignee.login unless issue.assignee.nil? %></td>
+		<td><%= issue.comments %></td>
+		<td><%= issue.state %></td>
+	</tr>
+	<% end %>
+</table>
+</div>
+
+<% end %>

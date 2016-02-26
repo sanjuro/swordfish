@@ -1,0 +1,16 @@
+<article class="single">
+    <header>
+        <hgroup>            
+        <h1><%= current_user.name %>'s Repos</h1>					
+        </hgroup>
+	</header>
+
+	<div id="issues"> 
+		<a type="button" class="btn btn-primary" href="<%= url_for new_issue_path %>">
+			Create Issue
+		</a>
+		<br><br>
+		<%= render :partial => 'issues/issues' %>
+	</div>
+
+</aritcle>

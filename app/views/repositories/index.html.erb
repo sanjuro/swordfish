@@ -1,0 +1,11 @@
+<article class="single">
+    <header>
+        <hgroup>            
+        <h1><%= current_user.name %>'s Repos</h1>				
+        </hgroup>
+	</header>
+
+	<div id="issues"> 
+		<%= render :partial => 'repositories/repositories' %>
+	</div>
+</aritcle>
