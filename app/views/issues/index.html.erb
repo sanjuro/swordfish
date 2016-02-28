@@ -1,18 +1,8 @@
-<article class="single">
-    <header>
-        <hgroup>            
-        <h1>Curent issue list</h1>					
-        </hgroup>
-	</header>
+<div id="issues"></div>
 
-	<div id="issues"> 
-		<a type="button" class="btn btn-primary" href="<%= url_for new_issue_path %>">
-			Create Issue
-		</a>
-		<br><br>
-		<div class="container-fluid">
-			<%= render :partial => 'issues/issues' %>
-		</div>
-	</div>
-
-</aritcle>
+<script type="text/javascript">
+  $(function() {
+  window.router = new App.Routers.Issues({issues: <%= @issues.to_json.html_safe -%>});
+  Backbone.history.start();
+  });
+</script>

@@ -1,10 +1,12 @@
 class IssuesController < ApplicationController
 	before_action :authenticate_user!
+	respond_to :html,:json
 
 	def index
 		user = 'WorkAtSwordfish'
 		repo = 'GitIntegration'
 		@issues = get_issues(user, repo, params[:page])
+		respond_with(@issues)
 	end
 
 	def new
@@ -19,7 +21,18 @@ class IssuesController < ApplicationController
 		user = 'WorkAtSwordfish'
 		repo = 'GitIntegration'
 		@issue = create_issue(user, repo, params)
-		redirect_to issues_path
+		
+		if @issue
+			@issues = get_issues(user, repo, params[:page])
+			respond_with(@issues)
+		else
+
+		end
+		puts @issue
+		@issues = get_issues(user, repo, params[:page])
+		puts @issues
+		exit
+		respond_with(@issues)
 	end
 
   def get_issues(user, repo, page = 1)

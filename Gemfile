@@ -29,6 +29,15 @@ gem 'dotenv-rails'
 
 gem 'devise'
 
+gem 'backbone-on-rails'
+
+gem 'therubyracer'
+
+gem 'execjs'
+
+# gem 'handlebars_assets'
+
+# gem 'hamlbars'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

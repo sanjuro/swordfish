@@ -2,33 +2,21 @@
 <html>
 <head>
   <title>Swordfish</title>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
 <br>
-<div class="container-fluid pull-right">
-	<div class="navigation" data-id="navigation">
-		<ul class="nav nav-pills">
-		  <li role="presentation" class="active">
-		  	<a title="repositories" href="/repositories">				
-					Repositories
-				</a>
-			</li>
-		  <li role="presentation">
-		  	<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-		  </li>
-		</ul>
-	</div>
-</div>
 
 <div class="container-fluid">
+	<h1><a href="#">Swordfish</a></h1>
+
+	<div id="app"></div>
+
 	<%= yield %>
+
 </div>
 
 </body>

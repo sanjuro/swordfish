@@ -4,7 +4,6 @@ class GithubIssue
 				:client, :client_color, :category, :category_color, :labels, :comments
 
 	def initialize(hash)
-
 		@id = hash["id"]
 		@number = hash["number"]
 		@name = hash["name"]
@@ -15,7 +14,6 @@ class GithubIssue
 		@comments = hash["comments"]
 		
 		get_labels hash
-
 	end
 
 	def get_labels(hash)
