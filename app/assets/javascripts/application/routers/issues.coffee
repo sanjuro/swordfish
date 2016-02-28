@@ -1,6 +1,7 @@
 class App.Routers.Issues extends App.Router
 
   initialize: (options) ->
+    @model = new App.Models.Issue()
     @issues = new App.Collections.Issues()
     @issues.reset options.issues
 
@@ -13,4 +14,4 @@ class App.Routers.Issues extends App.Router
     @view = new App.Views.Issues.Index({collection: @issues})
 
   newIssue: ->
-    @view = new App.Views.Issues.New({collection: @issues})
+    @view = new App.Views.Issues.New({model: @model, collection: @issues})

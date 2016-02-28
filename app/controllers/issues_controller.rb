@@ -28,11 +28,6 @@ class IssuesController < ApplicationController
 		else
 
 		end
-		puts @issue
-		@issues = get_issues(user, repo, params[:page])
-		puts @issues
-		exit
-		respond_with(@issues)
 	end
 
   def get_issues(user, repo, page = 1)

@@ -14,8 +14,8 @@
   </div>
 
   <div class="form-group">
-    <label for="client"> Client:</label>
-    <input name="client" id="client">
+    <% var f = SwordfishCheekBone.form_for(issue); %>
+    <%= f.select_tag('client', f.options_for_select([['','']].concat(client_options), ''), {label: 'Client', class: 'required_field'}) %>
   </div>
 
   <div class="form-group">

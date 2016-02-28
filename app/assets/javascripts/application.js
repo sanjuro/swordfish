@@ -18,6 +18,8 @@
 //= require backbone
 //= require handlebars
 
+//= require cheekbone
+
 //= require application/app
 
 //= require_tree .

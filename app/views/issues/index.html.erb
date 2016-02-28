@@ -3,6 +3,10 @@
 <script type="text/javascript">
   $(function() {
   window.router = new App.Routers.Issues({issues: <%= @issues.to_json.html_safe -%>});
+
+	App.Labels = new App.Collections.Labels();
+	App.Labels.fetch();
+
   Backbone.history.start();
   });
 </script>
