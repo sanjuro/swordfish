@@ -17,6 +17,7 @@
 //= require underscore
 //= require backbone
 //= require handlebars
+//= require jquery.gritter.min
 
 //= require cheekbone
 

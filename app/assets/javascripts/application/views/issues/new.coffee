@@ -22,29 +22,29 @@ class App.Views.Issues.New extends App.View
     priority_options: _.map @get_option_type('priority'), (client_option) -> client_option.name
     issue: @model.toJSON()
 
-  close: ->
-    @unbind()
-    @undelegateEvents()
-
   submit: (e) ->
     e.preventDefault()
     e.stopPropagation()
-    title = $('#title').val()
-    body = $('#body').val()
-    client = $('#client').val()
-    category = $('#category').val()
-    priority = $('#priority').val()
-    model = new App.Models.Issue({title: title, body: body, client: client, category: category, priority: priority})
+
+    issue_params = 
+      title: $('#title').val()
+      body: $('#body').val()
+      client: $('#client').val()
+      category: $('#category').val()
+      priority: $('#priority').val()
+
+    model = new App.Models.Issue(issue_params)
+    errors = model.validate(issue_params)
+    @showErrors errors
 
     @collection.create model,
       success: (issues) =>
-        alert('New issue created')
+        @flashSuccessMessage('New issue created')
         @close()
         router = new App.Routers.Issues(issues)
         router.navigate('index', {trigger: true}); 
-
       error: (model, response) =>
-        alert(response.message)
+        @flashErrorMessage('There was an error creating your issue')
 
   get_option_type: (type) ->
      _.filter @labels.toJSON(), (option) -> option.type == type

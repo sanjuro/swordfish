@@ -20,12 +20,13 @@ class IssuesController < ApplicationController
 	def create
 		user = 'WorkAtSwordfish'
 		repo = 'GitIntegration'
+
 		create_result = create_issue(user, repo, params)
 		
 		if create_result
-		  render :json => { :head => :ok, :success => true  }
+		  	render :json => { :head => :ok, :success => true }
 		else
-	    render :json => { :success => false   }
+	    	render :json => { :success => false }
 		end
 	end
 
@@ -40,5 +41,9 @@ class IssuesController < ApplicationController
   def get_labels(user, repo, type)
     labels_array = GithubService.new(session[:token]).get_labels(user, repo, type)
     labels_array.collect {|label| label["name"]}
+  end
+
+  def validate_issue
+    ValidateIssue.new(self.bank_account).validate!
   end
 end
