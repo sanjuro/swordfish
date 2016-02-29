@@ -20,13 +20,12 @@ class IssuesController < ApplicationController
 	def create
 		user = 'WorkAtSwordfish'
 		repo = 'GitIntegration'
-		@issue = create_issue(user, repo, params)
+		create_result = create_issue(user, repo, params)
 		
-		if @issue
-			@issues = get_issues(user, repo, params[:page])
-			respond_with(@issues)
+		if create_result
+		  render :json => { :head => :ok, :success => true  }
 		else
-
+	    render :json => { :success => false   }
 		end
 	end
 

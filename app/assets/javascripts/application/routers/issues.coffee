@@ -4,6 +4,8 @@ class App.Routers.Issues extends App.Router
     @model = new App.Models.Issue()
     @issues = new App.Collections.Issues()
     @issues.reset options.issues
+    @labels = new App.Collections.Labels();
+    @labels.reset options.issues
 
   routes:
     "index"       : "index"
@@ -14,4 +16,4 @@ class App.Routers.Issues extends App.Router
     @view = new App.Views.Issues.Index({collection: @issues})
 
   newIssue: ->
-    @view = new App.Views.Issues.New({model: @model, collection: @issues})
+    @view = new App.Views.Issues.New({model: @model, collection: @issues, labels: @labels})

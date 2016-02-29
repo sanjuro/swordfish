@@ -3,9 +3,11 @@ class App.Views.Issues.Index extends App.View
 
   template: JST["application/templates/issues/index"]
 
-  initialize: ->
-    @render()
-    @addAll()
+  initialize: (options) ->
+    @collection = options["collection"] if options["collection"]?
+    @collection.fetch success: =>
+      @render()
+      @addAll()
 
   addAll: ->
     @collection.forEach(@addOne, @)

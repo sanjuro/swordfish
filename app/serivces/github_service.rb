@@ -40,7 +40,7 @@ class GithubService
       }
 
     response = Faraday.post "https://api.github.com/repos/#{user}/#{repo}/issues", params.to_json, {'Authorization' => "token #{ENV['GTIHUB_TOKEN']}", 'Accept' => 'application/json'}
-    JSON.parse(response.body)
+    true unless response.status != 201
   end
 
   def get_all_labels(user, repo)
