@@ -10,8 +10,10 @@ class App.Views.Issues.New extends App.View
     @render()
 
   renderParams: ->
-    console.log(App.Labels)
-    client_options: App.Labels
+    console.log(App.Labels.toJSON());
+    client_options: _.map @get_option_type('client'), (client_option) -> client_option.name
+    category_options: _.map @get_option_type('category'), (client_option) -> client_option.name
+    priority_options: _.map @get_option_type('priority'), (client_option) -> client_option.name
     issue: @model.toJSON()
 
   render: ->
@@ -19,13 +21,16 @@ class App.Views.Issues.New extends App.View
     $(@el).html(@template(params))
     return this
 
- save: (e) ->
-  e.preventDefault()
-  e.stopPropagation()
-  title = $('#title').val()
-  body = $('#body').val()
-  model = new App.Models.Issue({title: title, body: body, client: client})
-  @collection.create model,
-    success: (issue) =>
-      @model = issue
-      window.location.hash = "/#issues"
+  save: (e) ->
+    e.preventDefault()
+    e.stopPropagation()
+    title = $('#title').val()
+    body = $('#body').val()
+    model = new App.Models.Issue({title: title, body: body, client: client})
+    @collection.create model,
+      success: (issue) =>
+        @model = issue
+        window.location.hash = "/#issues"
+
+  get_option_type: (type) ->
+     _.filter App.Labels.toJSON(), (option) -> option.type == type

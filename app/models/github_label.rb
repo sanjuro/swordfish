@@ -1,11 +1,10 @@
 class GithubLabel
 
-	attr_reader :id, :name, :url, :type
+	attr_reader :color, :name, :type
 
 	def initialize(hash)
-		@id = hash["id"]
+		@color = hash["color"]
 		@name = hash["name"]
-		@url = hash["url"]
 	end
 
   def process_label(name)

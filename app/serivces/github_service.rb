@@ -47,7 +47,7 @@ class GithubService
     response = Faraday.get "https://api.github.com/repos/#{user}/#{repo}/labels", {}, {'Authorization' => "token #{self.access_token}", 'Accept' => 'application/json'}
     labels_array = JSON.parse(response.body)
     labels_array.map{|label| GithubLabel.new(label) }
-    # process_labels labels_array
+    process_labels labels_array
   end
 
   def get_labels(user, repo, type)

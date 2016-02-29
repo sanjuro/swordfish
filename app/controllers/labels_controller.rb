@@ -1,5 +1,5 @@
 class LabelsController < ApplicationController
-	respond_to :html,:json
+	respond_to :json
 
 	def index
 		user = 'WorkAtSwordfish'
@@ -10,6 +10,5 @@ class LabelsController < ApplicationController
 
   def get_labels(user, repo)
     labels_array = GithubService.new(session[:token]).get_all_labels(user, repo)
-    labels_array.collect {|label| label["name"]}
   end
 end
