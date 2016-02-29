@@ -1,9 +1,11 @@
 <div id="issues"></div>
 
+<div id="loading"></div>
+
 <script type="text/javascript">
   $(function() {
   	window.router = new App.Routers.Issues({issues: <%= @issues.to_json.html_safe -%>});
 
-	  Backbone.history.start();
+	 	Backbone.history.start();
   });
 </script>

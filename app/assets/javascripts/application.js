@@ -18,6 +18,7 @@
 //= require backbone
 //= require handlebars
 //= require jquery.gritter.min
+//= require spin.min.js
 
 //= require cheekbone
 

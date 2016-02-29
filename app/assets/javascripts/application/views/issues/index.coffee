@@ -4,8 +4,10 @@ class App.Views.Issues.Index extends App.View
   template: JST["application/templates/issues/index"]
 
   initialize: (options) ->
+    @$el.append('<div class="loading"></div>').fadeIn();
     @collection = options["collection"] if options["collection"]?
     @collection.fetch success: =>
+      @$el.find('.loading').remove()
       @render()
       @addAll()
 
