@@ -2,10 +2,6 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
 
-  test "the truth" do
-    assert true
-  end
-
   test "Find user from Github Data" do
   	github_data = Hash[ 
   					:uid => 123515214, 

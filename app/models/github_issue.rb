@@ -1,7 +1,8 @@
 class GithubIssue
 
 	attr_reader :id, :number, :body, :name, :assignee, :state, :priority, :priority_color,
-				:client, :client_color, :category, :category_color, :labels, :comments
+				:client, :client_color, :category, :category_color, :labels, :comments, 
+				:labels
 
 	def initialize(hash)
 		@id = hash["id"]
@@ -10,13 +11,15 @@ class GithubIssue
 		@body = hash["body"]
 		@assignee = GithubUser.new hash["assignee"] unless hash["assignee"].nil?
 		@state = hash["state"]
-		@labels = hash["labels"]
+		@labels = Array.new
 		@comments = hash["comments"]
 		
 		get_labels hash
 	end
 
 	def get_labels(hash)
+		puts hash.inspect
+
 		hash["labels"].each do |label|
 
 			if label["name"].match('(^C:+)\W(.+)')
@@ -32,6 +35,7 @@ class GithubIssue
 				@priority = label["name"].match('(^P:+)\W(.+)')[2]
 				@priority_color = label["color"]
 			end
+			@labels << GithubLabel.new(label)
 		end
 	end
 end
