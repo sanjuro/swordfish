@@ -18,8 +18,6 @@ class GithubIssue
 	end
 
 	def get_labels(hash)
-		puts hash.inspect
-
 		hash["labels"].each do |label|
 
 			if label["name"].match('(^C:+)\W(.+)')
