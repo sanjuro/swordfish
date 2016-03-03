@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:github]
 
 	validates_presence_of :github_uid, :name, :email
-	validates_uniqueness_of :github_uid, :display_name
+	validates_uniqueness_of :github_uid
 
 
 	def self.find_or_create_by_github_uid(github_data)
