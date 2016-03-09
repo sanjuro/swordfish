@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:github]
 
-	validates_presence_of :github_uid, :name, :email
+	validates_presence_of :github_uid, :email
 	validates_uniqueness_of :github_uid
 
 
@@ -15,14 +15,12 @@ class User < ActiveRecord::Base
 		if user.nil?
 			user = User.create(
 				github_uid: github_data[:uid],
-				name: github_data['extra']['raw_info']['name'],
 				email: github_data['extra']['raw_info']['email'],
 				display_name: github_data['extra']['raw_info']['login']
 			) 
 		else
 			user.update_attributes!(
 				github_uid: github_data[:uid],
-				name: github_data['extra']['raw_info']['name'],
 				email: github_data['extra']['raw_info']['email'],
 				display_name: github_data['extra']['raw_info']['login']
 			)
@@ -35,6 +33,7 @@ class User < ActiveRecord::Base
   #     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
   #       user.provider = auth.provider
   #       user.uid = auth.uid
+  #       user.name = auth.info.login
   #       user.email = auth.info.email
   #       user.password = Devise.friendly_token[0,20]
   #     end

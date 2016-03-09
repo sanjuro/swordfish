@@ -1,5 +1,5 @@
 class App.Models.Label extends App.Model
-  url: '/lables'
+  url: '/labels'
 
   defaults:
   	name: "None"
