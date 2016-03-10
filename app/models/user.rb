@@ -9,34 +9,32 @@ class User < ActiveRecord::Base
 	validates_uniqueness_of :github_uid
 
 
-	def self.find_or_create_by_github_uid(github_data)
-		user = User.find_by(:github_uid => github_data[:uid]) 
+	# def self.find_or_create_by_github_uid(github_data)
+	# 	user = User.find_by(:github_uid => github_data[:uid]) 
 
-		if user.nil?
-			user = User.create(
-				github_uid: github_data[:uid],
-				email: github_data['extra']['raw_info']['email'],
-				display_name: github_data['extra']['raw_info']['login']
-			) 
-		else
-			user.update_attributes!(
-				github_uid: github_data[:uid],
-				email: github_data['extra']['raw_info']['email'],
-				display_name: github_data['extra']['raw_info']['login']
-			)
-		end
+	# 	if user.nil?
+	# 		user = User.create(
+	# 			github_uid: github_data[:uid],
+	# 			email: github_data['extra']['raw_info']['email'],
+	# 			display_name: github_data['extra']['raw_info']['login']
+	# 		) 
+	# 	else
+	# 		user.update_attributes!(
+	# 			github_uid: github_data[:uid],
+	# 			email: github_data['extra']['raw_info']['email'],
+	# 			display_name: github_data['extra']['raw_info']['login']
+	# 		)
+	# 	end
 
-		user
-	end
+	# 	user
+	# end
 
-  # def self.from_omniauth(auth)
-  #     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-  #       user.provider = auth.provider
-  #       user.uid = auth.uid
-  #       user.name = auth.info.login
-  #       user.email = auth.info.email
-  #       user.password = Devise.friendly_token[0,20]
-  #     end
-  # end
+  def self.from_omniauth(auth)
+      where(github_uid: auth.uid).first_or_create do |user|
+        user.github_uid = auth.uid
+        user.display_name = auth.info.login
+        user.email = auth.info.email
+      end
+  end
   
 end

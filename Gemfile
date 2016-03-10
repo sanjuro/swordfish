@@ -13,8 +13,8 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
+# Use sqlite3 as the database for Active Record
+gem 'sqlite3'
   
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
